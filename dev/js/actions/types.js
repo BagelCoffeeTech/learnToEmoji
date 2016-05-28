@@ -1,0 +1,6 @@
+//************************************************************************
+//									Q U I Z   A C T I O N S
+//************************************************************************
+export const PROGRESS_QUIZ = 'PROGRESS_QUIZ';
+export const DEGRESS_QUIZ = 'DEGRESS_QUIZ';
+export const RESET_QUIZ = 'RESET_QUIZ';
