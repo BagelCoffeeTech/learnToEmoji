@@ -8,6 +8,7 @@ import * as types from '../actions/types';
 //************************************************************************
 const initialState = {
   questionStage: 0,
+  playerScore: 0,
 };
 
 export default function quiz(state = initialState, action) {
@@ -25,6 +26,11 @@ export default function quiz(state = initialState, action) {
     case types.RESET_QUIZ: {
       return Object.assign({}, state, {
         questionStage: 0,
+      });
+    }
+    case types.INCREASE_PLAYER_SCORE: {
+      return Object.assign({}, state, {
+        playerScore: playerscore + 1,
       });
     }
     default: {

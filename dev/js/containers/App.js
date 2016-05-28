@@ -1,30 +1,65 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {
+  progressQuiz,
+  degressQuiz,
+  resetQuiz,
+} from '../actions/quiz-actions';
+
+import questions from '../../questions';
+
+import MultipleChoiceQuestion from '../components/MultipleChoiceQuestion.jsx';
 import Button from '../components/Button.jsx';
+import LandingPage from '../components/LandingPage.jsx';
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.renderPage = this.renderPage.bind(this);
+  }
+
+  renderPage(questionsObject) {
+    if (this.props.questionStage === 0) {
+      console.log('render landing page');
+      return <LandingPage onClick={this.props.progressQuiz} />
+    } else if (this.props.questionStage > 0 && this.props.questionStage < 4) {
+      const currentQuestion = questionsObject[`question${this.props.questionStage}`];
+      return (
+        <MultipleChoiceQuestion
+          details={currentQuestion}
+          questionNumber={this.props.questionStage}
+        />
+      );
+    } else if (this.props.questionStage >= 4) {
+      console.log('render text questions');
+    }
+
+    return null;
+  }
+
   render() {
     return (
       <section>
-        <section className="contentContainer">
-          <div className="contentContainer__descriptionWrapper">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos modi, nulla necessitatibus praesentium, corporis dolores officia. Dicta enim aliquam dolorem voluptatibus, minus qui nesciunt, amet deleniti natus ducimus perspiciatis corrupti.
-            </p>
-            <p>Odit et quibusdam quasi quae provident asperiores sunt, reiciendis ea, obcaecati voluptatibus blanditiis dolor facilis! Molestiae doloribus recusandae nesciunt, assumenda sit dolores pariatur hic ullam. Commodi, possimus nemo consectetur tempore?
-            </p>
-            <p>Voluptatibus reiciendis sit eligendi aliquid, inventore fugiat, at quos unde nemo nobis repellat assumenda sunt eaque odio quod pariatur vel aut dolores enim totam numquam mollitia. Quod quia ipsa et?
-            </p>
-          </div>
-          <div className="contentContainer__heroButtonWrapper">
-            <Button 
-              text="button test"
-              classes="heroButtonWrapper__heroButton"
-            />
-          </div>
-        </section>
+        {this.renderPage(questions)}
       </section>
     );
   }
-
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    questionStage: state.quiz.questionStage,
+  };
+}
+
+function dispatchStateToProps(dispatch) {
+  return bindActionCreators({
+    progressQuiz,
+    degressQuiz,
+    resetQuiz,
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, dispatchStateToProps)(App);
