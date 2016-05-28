@@ -6,19 +6,19 @@ import React from "react";
 //***************************************************
 //																C O M P O N E N T
 //***************************************************
-const Button = (props) => {
-	const { text, classes, onClick } = props;
+const Input = (props) => {
+	const { type, name, value } = props;
+
 	return (
-		<button
-			className={classes}
-			onClick={onClick}
-		>
-			{text}
-		</button>
-	);
-}
+		<input
+			type={type}
+			name={name}
+			value={value}
+		/>
+	)
+};
 
 //************************************************************************
-//																	C O M P O N E N T   E X P O R T
+//									E X P O R T 
 //************************************************************************
-export default Button;
+export default Input;
