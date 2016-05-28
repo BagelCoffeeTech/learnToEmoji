@@ -2,7 +2,6 @@
 //                                    M O D U L E     I M P O R T S
 //************************************************************************
 import React from 'react';
-import { connect } from 'react-redux';
 
 import Input from './Input.jsx';
 import Button from './Button.jsx';
@@ -10,7 +9,11 @@ import Button from './Button.jsx';
 //                                  C O M P O N E N T
 //************************************************************************
 const TextQuestion = (props) => {
-  const { details, questionNumber, onClick } = props;
+  const { details, questionNumber, onClick, addAnswer } = props;
+
+  function handleChange(e) {
+    addAnswer(e.target.value, questionNumber);
+  }
 
   return (
       <section
@@ -23,7 +26,8 @@ const TextQuestion = (props) => {
         </p>
         <form className="answerGroup">
           <textArea 
-            
+            className="questionTextAnswer"
+            onChange={handleChange}
           />
         </form>
         <Button 
@@ -37,4 +41,4 @@ const TextQuestion = (props) => {
 //************************************************************************
 //                              E X P O R T
 //************************************************************************
-export default connect(null)(TextQuestion);
+export default TextQuestion;
