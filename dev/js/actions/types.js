@@ -6,3 +6,5 @@ export const DEGRESS_QUIZ = 'DEGRESS_QUIZ';
 export const RESET_QUIZ = 'RESET_QUIZ';
 
 export const INCREASE_PLAYER_SCORE = 'INCREASE_PLAYER_SCORE';
+
+export const ADD_ANSWER = 'ADD_ANSWER';
