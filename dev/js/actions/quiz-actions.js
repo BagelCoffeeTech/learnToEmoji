@@ -21,11 +21,10 @@ export function resetQuiz() {
 	};
 }
 
-export function addAction(answer) {
+export function addAnswer(answer, questionNumber) {
 	return {
 		type: types.ADD_ANSWER,
-		payload: {
-  	answer,
-  },
+		questionNumber,
+ 	answer,
 	};
 }

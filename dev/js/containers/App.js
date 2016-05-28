@@ -5,6 +5,7 @@ import {
   progressQuiz,
   degressQuiz,
   resetQuiz,
+  addAnswer,
 } from '../actions/quiz-actions';
 
 import questions from '../../questions';
@@ -33,6 +34,7 @@ export class App extends Component {
             details={currentQuestion}
             questionNumber={this.props.questionStage}
             onClick={this.props.progressQuiz}
+            addAnswer={this.props.addAnswer}
           />
         </section>
       );
@@ -77,6 +79,7 @@ function dispatchStateToProps(dispatch) {
     progressQuiz,
     degressQuiz,
     resetQuiz,
+    addAnswer,
   }, dispatch);
 }
 
