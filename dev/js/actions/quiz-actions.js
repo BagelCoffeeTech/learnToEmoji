@@ -20,3 +20,12 @@ export function resetQuiz() {
 		type: types.RESET_QUIZ,
 	};
 }
+
+export function addAction(answer) {
+	return {
+		type: types.ADD_ANSWER,
+		payload: {
+  	answer,
+  },
+	};
+}

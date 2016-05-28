@@ -8,24 +8,8 @@ import Button from './Button.jsx';
 //************************************************************************
 //                                  C O M P O N E N T
 //************************************************************************
-const MultipleChoiceQuestion = (props) => {
+const TextQuestion = (props) => {
   const { details, questionNumber, onClick } = props;
-
-  function renderAnswers(answers) {
-    return answers.map(answer => {
-      return (
-        <div key={answer.text} className='radioAnswer'>
-          <Input
-            type="radio"
-            value={answer.text}
-            name={`question${questionNumber}`}
-            id={answer.text}
-          />
-          <label htmlFor={answer.text}>{answer.text}</label>
-        </div>
-      );
-    });
-  }
 
   return (
       <section
@@ -37,7 +21,9 @@ const MultipleChoiceQuestion = (props) => {
           {details.text}
         </p>
         <form className="answerGroup">
-          {renderAnswers(details.answers)}
+          <textArea 
+            
+          />
         </form>
         <Button 
           type="submit"
@@ -50,4 +36,4 @@ const MultipleChoiceQuestion = (props) => {
 //************************************************************************
 //                              E X P O R T
 //************************************************************************
-export default MultipleChoiceQuestion;
+export default TextQuestion;

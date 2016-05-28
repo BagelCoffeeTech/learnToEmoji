@@ -9,13 +9,15 @@ import * as types from '../actions/types';
 const initialState = {
   questionStage: 0,
   playerScore: 0,
+  answerArray: [],
 };
 
 export default function quiz(state = initialState, action) {
   switch(action.type) {
     case types.PROGRESS_QUIZ: {
+      console.log('yeahhhhhhh');
       return Object.assign({}, state, {
-        questionStage: state.questionStage + 1,
+        questionStage: state.questionStage += 1,
       });
     }
     case types.DEGRESS_QUIZ: {
@@ -31,6 +33,11 @@ export default function quiz(state = initialState, action) {
     case types.INCREASE_PLAYER_SCORE: {
       return Object.assign({}, state, {
         playerScore: playerscore + 1,
+      });
+    }
+    case types.ADD_ANSWER: {
+      return Object.assign({}, state, {
+        answerArray: [ ...state.answerArray, action.payload ],
       });
     }
     default: {
