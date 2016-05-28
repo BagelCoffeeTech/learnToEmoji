@@ -51,6 +51,7 @@ export class App extends Component {
             details={currentQuestion}
             questionNumber={this.props.questionStage}
             onClick={this.props.progressQuiz}
+            addAnswer={this.props.addAnswer}
           />
         </section>
       )
