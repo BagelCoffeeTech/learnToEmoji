@@ -2,6 +2,7 @@
 //                                    M O D U L E     I M P O R T S
 //************************************************************************
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Input from './Input.jsx';
 import Button from './Button.jsx';
@@ -36,4 +37,4 @@ const TextQuestion = (props) => {
 //************************************************************************
 //                              E X P O R T
 //************************************************************************
-export default TextQuestion;
+export default connect(null)(TextQuestion);

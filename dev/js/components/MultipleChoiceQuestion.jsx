@@ -9,7 +9,12 @@ import Button from './Button.jsx';
 //                                  C O M P O N E N T
 //************************************************************************
 const MultipleChoiceQuestion = (props) => {
-  const { details, questionNumber, onClick } = props;
+  const { details, questionNumber, onClick, addAnswer } = props;
+
+  function handleAnswer(e) {
+    addAnswer(e.target.value, questionNumber);
+    onClick();
+  }
 
   function renderAnswers(answers) {
     return answers.map(answer => {
@@ -20,6 +25,7 @@ const MultipleChoiceQuestion = (props) => {
             value={answer.text}
             name={`question${questionNumber}`}
             id={answer.text}
+            onClick={handleAnswer}
           />
           <label htmlFor={answer.text}>{answer.text}</label>
         </div>
@@ -39,11 +45,6 @@ const MultipleChoiceQuestion = (props) => {
         <form className="answerGroup">
           {renderAnswers(details.answers)}
         </form>
-        <Button 
-          type="submit"
-          text="Final Answer!"
-          onClick={onClick}
-        />
       </section>
     );
 }
